@@ -75,8 +75,8 @@ services:
       BOOTSTRAP_SERVERS: kafka:9092
       CONNECT_INTERNAL_KEY_CONVERTER: org.apache.kafka.connect.json.JsonConverter
       CONNECT_INTERNAL_VALUE_CONVERTER: org.apache.kafka.connect.json.JsonConverter
-      AWS_ACCESS_KEY_ID: AKIAXKK6H7MGGNC3A4HL
-      AWS_SECRET_ACCESS_KEY: 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
+      AWS_ACCESS_KEY_ID: 
+      AWS_SECRET_ACCESS_KEY: 
 # ---
 # version: "2"
 # services:
