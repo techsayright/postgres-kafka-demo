@@ -1,23 +1,24 @@
 {
-  "name": "mysql-source3",
+  "name": "inventory-connector1",
   "config": {
     "connector.class": "io.debezium.connector.mysql.MySqlConnector",
     "tasks.max": "1",
     "database.hostname": "mysql",
     "database.port": "3306",
-    "database.user": "mysql",
-    "database.password": "mysql",
-    "database.dbname": "students",
-    "database.server.id": "223344",
-    "database.server.name": "dbserver1",
-    "database.history.kafka.bootstrap.servers": "localhost:9093",
-    "database.history.kafka.topic": "students.mysql",
-    "include.schema.changes": "true",
-    "plugin.name": "wal2json",
+    "database.user": "debezium",
+    "database.password": "dbz",
+    "database.server.name": "local",
+    "database.include.list": "inventory",
     "transforms": "unwrap",
     "transforms.unwrap.type": "io.debezium.transforms.ExtractNewRecordState",
-    "transforms.unwrap.drop.tombstones": "false",
+    "transforms.unwrap.drop.tombstones": "true",
+    "transforms.unwrap.add.fields": "op,source.ts_ms",
     "transforms.unwrap.delete.handling.mode": "rewrite",
-    "transforms.unwrap.add.fields": "table,lsn"
+    "key.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "key.converter.schemas.enable": "false",
+    "value.converter.schemas.enable": "false",
+    "database.history.kafka.bootstrap.servers": "broker1:19093",
+    "database.history.kafka.topic": "schema-changes.inventory"
   }
 }

@@ -226,20 +226,15 @@ services:
   ##ALL SOURCES ADDED HERE
 
   mysql:
-    # image: mysql:5.7
-    build: ./src_mysql
+    image: debezium/example-mysql:1.4
+    # build: ./src_mysql
     ports:
-      - "3306:3306"
+      - 3306:3306
     container_name: mysql
     environment:
-      MYSQL_DATABASE: students
-      MYSQL_ROOT_PASSWORD: mysql
-      MYSQL_USER: mysql
-      MYSQL_PASSWORD: mysql
-      MYSQL_ROOT_HOST: mysql
-      MYSQL_HOST: mysql
-    volumes:
-      - $PWD:/home/config
+      - MYSQL_ROOT_PASSWORD=debezium
+      - MYSQL_USER=mysqluser
+      - MYSQL_PASSWORD=mysqlpw
 
   postgres:
     # image: debezium/postgres:11
